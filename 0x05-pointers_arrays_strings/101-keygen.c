@@ -1,30 +1,42 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
- * main - check the code for Holberton School students.
+ * main - random password generator for 101-crackme
  *
- * Return: Always 0.
+ * Return: always 0
  */
 int main(void)
 {
-	int n;
+	int i, j, k, s;
+	char c[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char p[58];
 
-	n = _atoi("98");
-	printf("%d\n", n);
-	n = _atoi("-402");
-	printf("%d\n", n);
-	n = _atoi("          ------++++++-----+++++--98");
-	printf("%d\n", n);
-	n = _atoi("2147483647");
-	printf("%d\n", n);
-	n = _atoi("-2147483648");
-	printf("%d\n", n);
-	n = _atoi("Suite 402");
-	printf("%d\n", n);
-	n = _atoi("         +      +    -    -98 Battery Street; San Francisco, CA 94111 - USA             ");
-	printf("%d\n", n);
-	n = _atoi("---++++ -++ Sui - te -   402 #cisfun :)");
-	printf("%d\n", n);
+	srand(time(NULL));
+	while (s != 2772)
+	{
+		i = k = s = 0;
+		while ((2772 - 122) > s)
+		{
+			j = rand() % 62;
+			p[i] = c[j];
+			s += c[j];
+			i++;
+		}
+		while (c[k])
+		{
+			if (c[k] == (2772 - s))
+			{
+				p[i] = c[k];
+				s += c[k];
+				i++;
+				break;
+			}
+			k++;
+		}
+	}
+	p[i] = '\0';
+	printf("%s", p);
 	return (0);
 }
