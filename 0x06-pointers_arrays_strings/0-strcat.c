@@ -1,20 +1,29 @@
-#iinclude "main.h"
+#include "main.h"
 
 /**
- * _memset - fills memory with a constant byte
- * @s: pointer to memory
- * @b: constant byte used to replace
- * @n: number of  bytes to replace
- * Description: fills memory s with byte b for n bytes
- * Return: pointer to memory
+ * _strcat - concatenates two strings
+ * @src: second string to copy from
+ * @dest: string to be overwritten
+ * Description: concatenates src to end of dest
+ * Return: pointer to dest
  **/
 
-char *_memset(char *s, char b, unsigned int n)
+char *_strcat(char *dest, char *src)
 {
-	for (; n > 0; n--)
+	int i, j;
+
+	i = 0;
+
+	while (dest[i] != '\0')
+		i++;
+
+	for (j = 0; src[j] != '\0'; j++)
 	{
-		s[n - 1] = b;
+		dest[i] = src[j];
+		i++;
 	}
 
-	return (s);
+	dest[i] = src[j];
+
+	return (dest);
 }
