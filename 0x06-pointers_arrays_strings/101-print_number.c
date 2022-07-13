@@ -1,69 +1,35 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
- * exponent - x to the power of y
- * @x: base number
- * @y: exponent
- * Description: calcuates x^y
- * Return: x^y
- *
- **/
+ * print_number - print an integer, without using long, arrays, or pointers
+ * @n: number to be printed
+ */
 
-int exponent(int x, int y)
+void print_number(int n)
 {
-	int power;
+	unsigned int tens, digit, positive = n;
+	double t_beg = 1;
 
-	power = x;
-
-	if (x == 0)
-		return (0);
-	if (y == 0)
-		return (1);
-
-	while (y >= 2)
+	if (n == 0)
+		_putchar('0');
+	else
 	{
-		power  = power * x;
-		y--;
+		if (n < 0)
+		{
+			positive = n * -1;
+			_putchar('-');
+		}
+
+		while (t_beg <= positive)
+			t_beg *= 10;
+		tens = t_beg / 10;
+
+		while (tens >= 1)
+		{
+			digit = positive / tens;
+			_putchar(digit + '0');
+			positive = (positive - (tens * digit));
+			tens /= 10;
+		}
 	}
-	return (power);
-}
-
-/**
- * print_number - print an int using only _putchar
- * @number: int to be printed by function
- *
- * Return: nothing
- **/
-
-void print_number(int number)
-{
-	int size, digit, counter, sign;
-
-	sign = 1;
-	digit = 0;
-	size = 1;
-	counter = number;
-
-	if (number < 0)
-	{
-		_putchar('-');
-		sign = -1;
-	}
-
-	for (; counter >= 10 || counter <= -10; size++)
-	{
-		counter = counter / 10;
-	}
-
-	counter = number;
-
-	while (size >= 2)
-	{
-		digit = (counter / exponent(10, size - 1)) * sign;
-		_putchar(digit + '0');
-		counter = counter % exponent(10, size - 1);
-		size--;
-	}
-	_putchar(sign * counter % 10 + '0');
 }
